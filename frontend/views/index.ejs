@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vercel Clone</title>
+  <style>
+    body { font-family: Arial; background:#111; color:#fff; text-align:center; padding:40px;}
+    input { width:350px; padding:10px; border-radius:5px; border:1px solid #555;}
+    button { padding:10px 20px; border:none; border-radius:5px; margin-left:10px; cursor:pointer;}
+    button:hover { opacity:0.8; }
+    .card { margin-top:20px; padding:20px; background:#222; border-radius:10px;}
+    a { color:#00eaff; text-decoration:none;}
+  </style>
+</head>
+<body>
+
+  <h1>Deploy a GitHub Project</h1>
+
+  <form action="/deploy" method="POST">
+    <input type="text" name="repoUrl" placeholder="Paste your GitHub repo URL…" required>
+    <button type="submit">Deploy</button>
+  </form>
+
+  <% if (deployedUrl) { %>
+    <div class="card">
+      <h3>Deployment Successful!</h3>
+      <p>Visit your deployed site:</p>
+      <a href="<%= deployedUrl %>" target="_blank"><%= deployedUrl %></a>
+    </div>
+  <% } %>
+
+  <% if (error) { %>
+    <div class="card" style="color:#ff8080">
+      <%= error %>
+    </div>
+  <% } %>
+
+</body>
+</html>
